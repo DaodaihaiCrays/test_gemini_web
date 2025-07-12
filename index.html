@@ -4,16 +4,27 @@
   <meta charset="UTF-8">
   <title>Đang mở ứng dụng...</title>
   <script>
+    // Lấy giá trị name từ URL ?name=...
     const params = new URLSearchParams(window.location.search);
     const name = params.get('name') || 'Nguyễn Văn A';
-    window.location.href = `tichhopai://app/createuser?name=${encodeURIComponent(name)}`;
+    // Tạo Deep Link
+    const deeplink = `tichhopai://app/createuser?name=${encodeURIComponent(name)}`;
+    // Chờ 2 giây rồi tự mở
+    setTimeout(() => {
+      window.location.href = deeplink;
+    }, 2000);
   </script>
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; margin-top: 20%; }
+  </style>
 </head>
 <body>
-<h2>Đang chuyển hướng...</h2>
+<h2>Đang chuyển hướng sang ứng dụng tich_hop_ai...</h2>
+<p>Tên người dùng: <b id="username"></b></p>
 <p>Nếu không tự mở, <a id="deeplink" href="#">bấm vào đây</a>.</p>
 <script>
-  document.getElementById('deeplink').href = `tichhopai://app/createuser?name=${encodeURIComponent(name)}`;
+  document.getElementById('username').innerText = params.get('name') || 'Nguyễn Văn A';
+  document.getElementById('deeplink').href = deeplink;
 </script>
 </body>
 </html>
