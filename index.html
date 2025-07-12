@@ -1,32 +1,19 @@
-<!--<!DOCTYPE html>-->
-<!--<html lang="vi">-->
-<!--<head>-->
-<!--  <meta charset="UTF-8">-->
-<!--  <title>Đang mở ứng dụng...</title>-->
-<!--  <meta http-equiv="refresh" content="0; url=tichhopai://app/createuser?name=Nguyễn%20Văn%20A">-->
-<!--  <style>-->
-<!--    body { font-family: Arial, sans-serif; text-align: center; margin-top: 20%; }-->
-<!--  </style>-->
-<!--</head>-->
-<!--<body>-->
-<!--<h2>Đang chuyển hướng sang ứng dụng tich_hop_ai...</h2>-->
-<!--<p>Nếu không tự mở, <a href="tichhopai://app/createuser?name=Nguyễn%20Văn%20A">bấm vào đây</a>.</p>-->
-<!--</body>-->
-<!--</html>-->
-
-
 <!DOCTYPE html>
 <html lang="vi">
 <head>
   <meta charset="UTF-8">
   <title>Đang mở ứng dụng...</title>
-  <meta http-equiv="refresh" content="2; url=tichhopai://app/createuser?name=Nguyễn%20Văn%20A">
-  <style>
-    body { font-family: Arial, sans-serif; text-align: center; margin-top: 20%; }
-  </style>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const name = params.get('name') || 'Nguyễn Văn A';
+    window.location.href = `tichhopai://app/createuser?name=${encodeURIComponent(name)}`;
+  </script>
 </head>
 <body>
-<h2>Đang chuyển hướng sang ứng dụng tich_hop_ai...</h2>
-<p>Nếu không tự mở, <a href="tichhopai://app/createuser?name=Nguyễn%20Văn%20A">bấm vào đây</a>.</p>
+<h2>Đang chuyển hướng...</h2>
+<p>Nếu không tự mở, <a id="deeplink" href="#">bấm vào đây</a>.</p>
+<script>
+  document.getElementById('deeplink').href = `tichhopai://app/createuser?name=${encodeURIComponent(name)}`;
+</script>
 </body>
 </html>
